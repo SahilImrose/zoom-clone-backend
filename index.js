@@ -3,6 +3,9 @@ const http = require("https")
 const app = express()
 const server = http.createServer(app)
 require('dotenv').config()
+
+app.use(cors())
+
 const io = require("socket.io")(server, {
 	cors: {
 		origin: "https://zoom-clone-sahil.web.app/",
