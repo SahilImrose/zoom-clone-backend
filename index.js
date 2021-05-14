@@ -5,10 +5,15 @@ const bodyParser = require("body-parser");
 const app = express()
 const server = http.createServer(app)
 require('dotenv').config()
+
+const io = require("socket.io")(server, {
+    cors: {
+        origin: "https://zoom-clone-sahil.web.app/",
+		methods: [ "GET", "POST" ]
+	}
+});
 app.use(bodyParser.json())
 app.use(cors())
-
-const io = require("socket.io")(server)
 
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id)
