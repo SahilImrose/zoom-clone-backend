@@ -1,5 +1,6 @@
 const express = require("express")
 const http = require("https")
+const cors = require("cors");
 const app = express()
 const server = http.createServer(app)
 require('dotenv').config()
