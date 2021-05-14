@@ -1,11 +1,11 @@
 const express = require("express")
-const http = require("http")
+const http = require("https")
 const app = express()
 const server = http.createServer(app)
 require('dotenv').config()
 const io = require("socket.io")(server, {
 	cors: {
-		origin: "http://localhost:3000",
+		origin: "https://zoom-clone-sahil.web.app/",
 		methods: [ "GET", "POST" ]
 	}
 })
