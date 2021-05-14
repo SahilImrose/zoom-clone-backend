@@ -1,18 +1,14 @@
 const express = require("express")
 const http = require("https")
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const app = express()
 const server = http.createServer(app)
 require('dotenv').config()
-
+app.use(bodyParser.json())
 app.use(cors())
 
-const io = require("socket.io")(server, {
-	cors: {
-		origin: "https://zoom-clone-sahil.web.app/",
-		methods: [ "GET", "POST" ]
-	}
-})
+const io = require("socket.io")(server)
 
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id)
